@@ -97,8 +97,10 @@ class Window(QtWidgets.QWidget):
             self.show_flag = False
 
     def b_yes_click(self):
+        completed.append(deck.get_card(self.index))  # Adds the card to the list of uncompleted FlashCards.
         self.update_index()
         self.word_label.setText(deck.get_card(self.index).get_frontside())
+        print(len(completed))
 
     def b_no_click(self):
         self.update_index()
@@ -111,6 +113,9 @@ class Window(QtWidgets.QWidget):
 
 
 deck = Deck()  # Creates the deck containing cards filled with information from a .docx file.
+uncompleted = []
+completed = []
+
 app = QtWidgets.QApplication(sys.argv)
 a_window = Window()
 a_window.resize(700, 700)
