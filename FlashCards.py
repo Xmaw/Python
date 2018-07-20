@@ -2,7 +2,7 @@ from PyQt5.QtCore import *
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QLabel
 import sys
-
+import random
 import docx2txt
 
 
@@ -37,6 +37,11 @@ class Deck:
 
     def remove_card(self, index):
         del self.deck[index]
+
+    def shuffle(self):
+        print("Initialize shuffle")
+        random.shuffle(self.deck)
+        print("Shuffle complete")
 
 
 class Cards:
@@ -104,7 +109,7 @@ class Window(QtWidgets.QWidget):
         self.word_label.setText(deck.get_card(0).get_frontside())
 
     def b_no_click(self):
-        self.update_index()
+        deck.shuffle()
         self.word_label.setText(deck.get_card(0).get_frontside())
 
 
