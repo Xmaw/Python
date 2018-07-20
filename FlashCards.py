@@ -35,6 +35,9 @@ class Deck:
     def print_size(self):
         print(self.size)
 
+    def remove_card(self, index):
+        del self.deck[index]
+
 
 class Cards:
     def __init__(self, frontside, backside):
@@ -52,7 +55,6 @@ class Window(QtWidgets.QWidget):
     def __init__(self):
         super(Window, self).__init__()
         self.show_flag = False
-        self.index = 0
         self.b_show = QtWidgets.QPushButton('Show')
         self.b_no = QtWidgets.QPushButton('No')
         self.b_yes = QtWidgets.QPushButton('Yes')
@@ -69,7 +71,7 @@ class Window(QtWidgets.QWidget):
         self.word_label.setStyleSheet("font: 20pt;")
         self.word_label.setWordWrap(True)
         print()
-        self.word_label.setText(deck.get_card(self.index).get_frontside())
+        self.word_label.setText(deck.get_card(0).get_frontside())
 
         self.setup_ui()
 
@@ -90,26 +92,20 @@ class Window(QtWidgets.QWidget):
 
     def b_show_click(self):
         if not self.show_flag:
-            self.word_label.setText(deck.get_card(self.index).get_backside())
+            self.word_label.setText(deck.get_card(0).get_backside())
             self.show_flag = True
         elif self.show_flag:
-            self.word_label.setText(deck.get_card(self.index).get_frontside())
+            self.word_label.setText(deck.get_card(0).get_frontside())
             self.show_flag = False
 
     def b_yes_click(self):
-        completed.append(deck.get_card(self.index))  # Adds the card to the list of uncompleted FlashCards.
-        self.update_index()
-        self.word_label.setText(deck.get_card(self.index).get_frontside())
-        print(len(completed))
+        completed.append(deck.get_card(0))  # Adds the card to the list of uncompleted FlashCards.
+        deck.remove_card(0)
+        self.word_label.setText(deck.get_card(0).get_frontside())
 
     def b_no_click(self):
         self.update_index()
-        self.word_label.setText(deck.get_card(self.index).get_frontside())
-
-    def update_index(self):
-        self.index += 1
-        if self.index == deck.size:
-            self.index = 0
+        self.word_label.setText(deck.get_card(0).get_frontside())
 
 
 deck = Deck()  # Creates the deck containing cards filled with information from a .docx file.
