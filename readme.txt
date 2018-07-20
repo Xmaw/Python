@@ -1,7 +1,7 @@
 This program is ment to act as a FlashCard for learning. 
 The code works in a way that wwgiven a sentence, example:
 
-Pie - Preresquisite for life on earth. 
+Pie - Essential for life on earth. 
 
 The program will given the locatino of the file create a GUI displaying a "card" with
 

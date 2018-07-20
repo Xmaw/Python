@@ -11,15 +11,14 @@ class Deck:
         self.deck = []
         self.size = 0
 
-        # ----Get list elements from handle_file function----
+        # ----Get list elements from add_cards function----
         self.add_cards()
-        print("size: ", self.size)
 
     def get_card(self, index):
         return self.deck[index]
 
     def add_cards(self):
-        my_text = docx2txt.process("C:\\Users\\Elias\\Desktop\\Hej.docx")
+        my_text = docx2txt.process("C:\\Users\\Elias\\Desktop\\School\\Nätverk\\FlashCards_Network.docx")
         s = my_text.split("\n\n")
         s_temp = ""
         for word in s:
@@ -39,11 +38,11 @@ class Deck:
 
 class Cards:
     def __init__(self, frontside, backside):
-        self.fronside = frontside
+        self.frontside = frontside
         self.backside = backside
 
     def get_frontside(self):
-        return self.fronside
+        return self.frontside
 
     def get_backside(self):
         return self.backside
@@ -80,8 +79,6 @@ class Window(QtWidgets.QWidget):
         self.b_no.clicked.connect(self.b_no_click)
         self.b_yes.clicked.connect(self.b_yes_click)
 
-        # ----Flag for displaying Word or Explenation-----
-
         self.h_box.addWidget(self.word_label)
         self.h_box.addWidget(self.b_show)
         self.h_box.addWidget(self.b_no)
@@ -109,7 +106,7 @@ class Window(QtWidgets.QWidget):
 
     def update_index(self):
         self.index += 1
-        if self.index == len(self.list_word):
+        if self.index == deck.size:
             self.index = 0
 
 
