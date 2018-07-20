@@ -2,7 +2,7 @@ from PyQt5.QtCore import *
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QLabel
 import sys
-import random
+from random import shuffle
 import docx2txt
 
 
@@ -40,7 +40,7 @@ class Deck:
 
     def shuffle(self):
         print("Initialize shuffle")
-        random.shuffle(self.deck)
+        shuffle(self.deck)
         print("Shuffle complete")
 
 
