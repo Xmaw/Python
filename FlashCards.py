@@ -39,9 +39,7 @@ class Deck:
         del self.deck[index]
 
     def shuffle(self):
-        print("Initialize shuffle")
         shuffle(self.deck)
-        print("Shuffle complete")
 
 
 class Cards:
