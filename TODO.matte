@@ -1,0 +1,31 @@
+# Repo name
+
+- Bra med namnbyte från "Python" till "FlashCards"
+- "FlashCards" är ok, men "flash-cards" är vanligare
+
+# README
+
+- Bra att det finns readme!
+- Readme innehåller dock en del stavfel, och saknar "rubrik"
+- Här kan man läsa lite om GitHubs guide på ämnet: https://guides.github.com/features/wikis/
+
+# Kod
+
+Det finns en officiell stilguide till Python, som jag anser att man bör följa om man inte har en mycket bra anledning till att inte göra det. Den heter "PEP 8". (PEP = Python Enhancement Proposals, det här är nummer 8.) 
+
+https://www.python.org/dev/peps/pep-0008/#package-and-module-names
+
+- "FlashCards.py" borde vara "flashcards.py"
+- Detta är inte viktigt, men om man lägger till en main-if-sats (https://docs.python.org/3/library/__main__.html) så kan man importera modulen i andra moduler för att återanvända kod
+- Fler kommentarer finns i själva koden!
+
+# GUI
+
+- Det händer inget om jag trycket "show", men uppdateringen syns när jag alt-tabbar bort från programmet och tillbaka. Det verkar som att man kan använda sig utav "widget.update()" i Qt för att schedulera en omritning
+- Väldigt oklart vad "Yes" och "No" betyder om man inte läser koden :)
+- Vad händer när man är "klar"?
+
+# .docx
+
+Jag vet inte bakgrunden till varför ett deck lagras som ett .docx, om det inte finns någon speciell anledning så vore det bättre med något enklare filformat som t.ex. JSON eller liknande.
+(Det sagt så är det jättebra att du har använt ett färdigt lib för att parsa .docx istället för att göra det själv.)
