@@ -1,9 +1,12 @@
-from PyQt5.QtCore import *
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, Qt
 from PyQt5.QtWidgets import QLabel
 import sys
 from random import shuffle
 import docx2txt
+
+"""
+    
+"""
 
 
 class Deck:
