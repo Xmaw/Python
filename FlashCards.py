@@ -5,6 +5,21 @@ from random import shuffle
 import docx2txt
 
 """
+    This program is created for flashcards suitable for studying.
+    It takes information from a .docx file and creates the front- and backside 
+    of the study card in the following manner:
+    
+    Bacon - Something incredible tasty!
+    
+    'Bacon' becomes the front of the card and 'Something incredible tasty!' becomes the backside.
+    Using the GUI the user can press three different buttons to navigate through the dock. 
+    
+    ---BUTTONS---
+    'Show' - Switches between the front and the backside of the cards.
+    'No' - Places the top card back in the deck and shuffles it.
+    'Yes' - Removes the top card of the study deck and places in a separate deck for completed cards.
+    
+    Author: Elias Johansson
     
 """
 
