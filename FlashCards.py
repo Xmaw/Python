@@ -66,7 +66,7 @@ class Window(QtWidgets.QWidget):
     def __init__(self):
         super(Window, self).__init__()
         self.show_flag = False
-        self.b_show = QtWidgets.QPushButton('Show')
+        self.b_flip = QtWidgets.QPushButton('Flip Card')
         self.b_no = QtWidgets.QPushButton('No')
         self.b_yes = QtWidgets.QPushButton('Yes')
 
@@ -85,12 +85,12 @@ class Window(QtWidgets.QWidget):
 
     def setup_ui(self):
         # ----Link buttons to the corresponding functions----
-        self.b_show.clicked.connect(self.b_show_click)
+        self.b_flip.clicked.connect(self.b_flip_click)
         self.b_no.clicked.connect(self.b_no_click)
         self.b_yes.clicked.connect(self.b_yes_click)
 
         self.h_box.addWidget(self.word_label)
-        self.h_box.addWidget(self.b_show)
+        self.h_box.addWidget(self.b_flip)
         self.h_box.addWidget(self.b_no)
         self.h_box.addWidget(self.b_yes)
 
@@ -98,7 +98,7 @@ class Window(QtWidgets.QWidget):
         self.setWindowTitle('Study Cards')
         self.show()
 
-    def b_show_click(self):
+    def b_flip_click(self):
         if self.show_flag:
             self.word_label.setText(deck.get_card(0).get_back())
             self.show_flag = False
