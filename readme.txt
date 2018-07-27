@@ -26,7 +26,10 @@ Yes: If you can match the information displayed on the back of the card correctl
 this button will remove the card from the deck and place it in a deck with only
 completed cards.
 
-No: If you fail to match the infomratino displayedo n the back fo the card this button
+No: If you fail to match the information displayed on the back of the card this button
 will place the card back into the deck and shuffle it.
 
+---Additional information---
+The reason why I have chosen to use .docx in my program is because I want to be able
+to use my lecture notes. The notes are created in 'Word'. One could argue that the same result could be achieved by converting the .docx file to a raw text file. But hey, it works!
 
