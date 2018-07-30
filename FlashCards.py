@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QLabel, QGridLayout
 import sys
 from random import shuffle
 import docx2txt
@@ -119,11 +119,29 @@ class Window(QtWidgets.QWidget):
         completed.append(deck.get_card(0))
         deck.remove_card(0)
         self.word_label.setText(deck.get_card(0).get_front())
+        if True:  # deck.get_deck_size() == 0:
+            self.you_won()
         self.deck_size_label.setText("Cards in deck: " + str(deck.get_deck_size()))
 
     def b_no_click(self):
         deck.shuffle()
         self.word_label.setText(deck.get_card(0).get_front())
+
+    def you_won(self):
+        for i in reversed(range(self.h_box.layout().count())):
+            self.layout().itemAt(i).widget().deleteLater()
+
+        win_text = QLabel()
+        win_text.setText("You were able to finish the whole deck of cards. Well done!")
+        win_text.setStyleSheet('font: 20px')
+        b_win_quit = QtWidgets.QPushButton('Quit')
+        b_win_quit.clicked.connect(self.b_win_quit_clicked)
+
+        self.h_box.addWidget(win_text)
+        self.h_box.addWidget(b_win_quit)
+
+    def b_win_quit_clicked(self):
+        sys.exit()
 
 
 if __name__ == '__main__':
