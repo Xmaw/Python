@@ -119,9 +119,10 @@ class Window(QtWidgets.QWidget):
         completed.append(deck.get_card(0))
         deck.remove_card(0)
         self.word_label.setText(deck.get_card(0).get_front())
-        if True:  # deck.get_deck_size() == 0:
-            self.you_won()
         self.deck_size_label.setText("Cards in deck: " + str(deck.get_deck_size()))
+
+        if deck.get_deck_size() == 0:
+            self.you_won()
 
     def b_no_click(self):
         deck.shuffle()
