@@ -49,6 +49,9 @@ class Deck:
     def shuffle(self):
         shuffle(self.cards)
 
+    def get_deck_size(self):
+        return len(self.cards)
+
 
 class Cards:
     def __init__(self, font, back):
@@ -73,7 +76,13 @@ class Window(QtWidgets.QWidget):
         # ----H_BOX to store the widgets in ----
         self.h_box = QtWidgets.QVBoxLayout()
 
-        # ----Labels to display the text ----
+        # ----Label to display size of deck ----
+        self.deck_size_label = QLabel(self)
+        self.deck_size_label.resize(200, 200)
+        self.deck_size_label.setText("Cards in deck: " + str(deck.get_deck_size()))
+        self.deck_size_label.move(450, 25)
+
+        # ----Labels to display the text of the card ----
         self.word_label = QLabel()
         self.word_label.resize(50, 50)
         self.word_label.setAlignment(Qt.AlignCenter)
@@ -110,6 +119,7 @@ class Window(QtWidgets.QWidget):
         completed.append(deck.get_card(0))
         deck.remove_card(0)
         self.word_label.setText(deck.get_card(0).get_front())
+        self.deck_size_label.setText("Cards in deck: " + str(deck.get_deck_size()))
 
     def b_no_click(self):
         deck.shuffle()
