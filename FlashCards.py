@@ -73,11 +73,14 @@ class Window(QtWidgets.QWidget):
         self.b_no = QtWidgets.QPushButton('No')
         self.b_yes = QtWidgets.QPushButton('Yes')
 
-        # ----H_BOX to store the widgets in ----
-        self.h_box = QtWidgets.QVBoxLayout()
+        # ----Text Box ----
+        self.v_box = QtWidgets.QVBoxLayout()
+
+        # ----Button Box ----
+        self.button_box = QtWidgets.QVBoxLayout()
 
         # ----Label to display size of deck ----
-        self.deck_size_label = QLabel(self)
+        self.deck_size_label = QLabel()
         self.deck_size_label.resize(200, 200)
         self.deck_size_label.setText("Cards in deck: " + str(deck.get_deck_size()))
         self.deck_size_label.move(450, 25)
@@ -98,12 +101,17 @@ class Window(QtWidgets.QWidget):
         self.b_no.clicked.connect(self.b_no_click)
         self.b_yes.clicked.connect(self.b_yes_click)
 
-        self.h_box.addWidget(self.word_label)
-        self.h_box.addWidget(self.b_flip)
-        self.h_box.addWidget(self.b_no)
-        self.h_box.addWidget(self.b_yes)
+        self.v_box.addWidget(self.deck_size_label)
+        self.v_box.addWidget(self.word_label)
+        self.v_box.addStretch()
 
-        self.setLayout(self.h_box)
+        self.button_box.addLayout(self.v_box)
+
+        self.button_box.addWidget(self.b_flip)
+        self.button_box.addWidget(self.b_yes)
+        self.button_box.addWidget(self.b_no)
+
+        self.setLayout(self.button_box)
         self.setWindowTitle('Study Cards')
         self.show()
 
@@ -129,7 +137,7 @@ class Window(QtWidgets.QWidget):
         self.word_label.setText(deck.get_card(0).get_front())
 
     def you_won(self):
-        for i in reversed(range(self.h_box.layout().count())):
+        for i in reversed(range(self.v_box.layout().count())):
             self.layout().itemAt(i).widget().deleteLater()
 
         win_text = QLabel()
@@ -138,8 +146,8 @@ class Window(QtWidgets.QWidget):
         b_win_quit = QtWidgets.QPushButton('Quit')
         b_win_quit.clicked.connect(self.b_win_quit_clicked)
 
-        self.h_box.addWidget(win_text)
-        self.h_box.addWidget(b_win_quit)
+        self.v_box.addWidget(win_text)
+        self.v_box.addWidget(b_win_quit)
 
     def b_win_quit_clicked(self):
         sys.exit()
@@ -152,5 +160,5 @@ if __name__ == '__main__':
 
     app = QtWidgets.QApplication(sys.argv)
     a_window = Window()
-    a_window.resize(700, 700)
+    a_window.resize(700, 500)
     sys.exit(app.exec())
